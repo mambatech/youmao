@@ -6,8 +6,10 @@ import 'package:flutter/services.dart';
 import 'package:youmao/home_page.dart';
 import 'package:youmao/music_page.dart';
 import 'package:youmao/redux/GlobalAppState.dart';
+import 'package:youmao/redux/play/action.dart' as play;
 import 'package:youmao/soud_page.dart';
 import 'package:redux/redux.dart';
+import 'package:youmao/utils/tools.dart';
 
 class HomeManagerWidget extends StatefulWidget {
 
@@ -43,8 +45,31 @@ class HomeManagerState extends State<HomeManagerWidget> with SingleTickerProvide
   void initState() {
     // TODO: implement initState
     super.initState();
+
+    var playState = globalStore.state.globalPlayState;
+    playState.audioPlayer.onAudioPositionChanged.listen(
+        (d) {
+          Map progressMap = {};
+          progressMap['type'] = play.Actions.changeProgress;
+          progressMap['payload'] = d;
+          this.globalStore.dispatch(progressMap);
+
+          //自动播放下一首
+          //d为当前播放进度
+          // 当前播放歌曲长度等于当前播放进度
+          //      精确度：秒
+          //TODO
+//          if (stringDurationToDouble(d.toString().substring(2, 7)) == stringDurationToDouble(playState.duration.toString().substring(2, 7))) {
+//            this.globalStore.dispatch(playState.pl)
+//          }
+
+        }
+    );
+
     mPages = [HomePage("首页"), MusicPage("音乐咯"), SoundPage("声音")];
   }
+
+
 
   void onPageChanged(int index) {
     setState(() {

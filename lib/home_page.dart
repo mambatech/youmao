@@ -3,6 +3,8 @@
  */
 import 'package:flutter/material.dart';
 
+import 'components/HomeBanner.dart';
+
 class HomePage extends StatefulWidget {
   String mTitle;
   HomePage(this.mTitle);
@@ -16,9 +18,15 @@ class HomePage extends StatefulWidget {
 class PageHomeState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text(widget.mTitle),),body: Center(child: Text(
-      '${widget.mTitle}内容',
-      style: TextStyle(fontSize:  20),
-    )),);
+    return Scaffold(appBar: AppBar(title: Text(widget.mTitle),),body:
+      SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            //TODO 预设图片
+            HomeBanner(null),
+          ],
+        ),
+    ),);
   }
 }
