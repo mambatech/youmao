@@ -2,18 +2,28 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:youmao/home.dart';
 import 'package:youmao/home_page.dart';
+import 'package:youmao/redux/GlobalAppState.dart';
+import 'package:redux/redux.dart';
 
 class SplashScreen extends StatefulWidget {
+
+  Store<GlobalAppState> globalStore;
+
+  SplashScreen(this.globalStore);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return new SplashState();
+    return new SplashState(globalStore);
   }
 }
 
 class SplashState extends State<SplashScreen> {
   var mIsLoading = false;
+  Store<GlobalAppState> globalStore;
+
+  SplashState(this.globalStore);
+
   @override
   void initState() {
     // TODO: implement initState
@@ -74,7 +84,7 @@ class SplashState extends State<SplashScreen> {
     });
     Future.delayed(Duration(seconds: 2), () {
       Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (context){
-        return new HomeManagerWidget();
+        return new HomeManagerWidget(globalStore);
       }));
     });
   }

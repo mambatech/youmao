@@ -1,16 +1,29 @@
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:redux_thunk/redux_thunk.dart';
 import 'package:youmao/model/model.dart';
+import 'package:youmao/redux/GlobalAppState.dart';
+import 'package:youmao/redux/common/state.dart';
+import 'package:youmao/redux/play/GlobalPlayState.dart';
 import 'package:youmao/splashscreen.dart';
 import 'home_page.dart';
 import 'music_page.dart';
 import 'soud_page.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:redux/redux.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  final globalStore = Store<GlobalAppState>(appReducer, middleware: [thunkMiddleware], initialState: GlobalAppState(
+    commonState: CommonState.initState(),
+    globalPlayState: GlobalPlayState.initState(),
+  ));
+  runApp(MyApp(globalStore));
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  Store<GlobalAppState> globalStore;
+  MyApp(this.globalStore);
   @override
   Widget build(BuildContext context) {
 
@@ -29,70 +42,12 @@ class MyApp extends StatelessWidget {
             title: '友猫',
             theme: theme,
             debugShowCheckedModeBanner: false,
-            home: new SplashScreen(),
+            home: new SplashScreen(globalStore),
           ),
         );
       },
     );
 
-    /**return MaterialApp(
-      title: '友猫',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.teal,
-      ),
-      home: BottomNavigationBarWidget(),
-    );**/
   }
 }
-/**
-class BottomNavigationBarWidget extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return BottomNavigationBarWidgetState();
-  }
-}
-class BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
-  int mSelectedIndex = 0;
-  List<Widget> mItemList = List();
-  @override
-  void initState() {
-    super.initState();
-    mItemList..add(HomePage('首页'))..add(MusicPage('音乐'))..add(SoundPage('模仿'));
-  }
-
-  void onClick(int index) {
-    setState(() {
-      mSelectedIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      body: mItemList[mSelectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('首页')),
-          BottomNavigationBarItem(icon: Icon(Icons.library_music), title: Text('音乐')),
-          BottomNavigationBarItem(icon: Icon(Icons.surround_sound),title: Text('模仿')),
-        ],
-        currentIndex: mSelectedIndex,
-        selectedItemColor: Colors.teal,
-        onTap: onClick,
-      ),
-    );
-  }
-
-
-}**/
 

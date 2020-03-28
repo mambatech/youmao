@@ -5,11 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:youmao/home_page.dart';
 import 'package:youmao/music_page.dart';
+import 'package:youmao/redux/GlobalAppState.dart';
 import 'package:youmao/soud_page.dart';
+import 'package:redux/redux.dart';
 
 class HomeManagerWidget extends StatefulWidget {
 
-  HomeManagerWidget();
+  Store<GlobalAppState> globalStore;
+  HomeManagerWidget(this.globalStore);
   final bottomItems = [
     new BottomItem("Home", Icons.home),
     new BottomItem("Music", Icons.library_music),
@@ -19,19 +22,22 @@ class HomeManagerWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return HomeManagerState();
+    return HomeManagerState(globalStore);
   }
 }
 
-class HomeManagerState extends State<HomeManagerWidget>with SingleTickerProviderStateMixin<HomeManagerWidget> {
+class HomeManagerState extends State<HomeManagerWidget> with SingleTickerProviderStateMixin<HomeManagerWidget> {
 
   var mPages;
+  Store<GlobalAppState> globalStore;
   int mCurrentIndex = 0;
   //默认
   String mTitle = "友猫";
   //TODO
   bool mIsLoading = false;
   final mPageController = PageController();
+
+  HomeManagerState(this.globalStore);
 
   @override
   void initState() {
@@ -67,7 +73,6 @@ class HomeManagerState extends State<HomeManagerWidget>with SingleTickerProvider
 
       );
     }
-
 
     return new WillPopScope(child: new Scaffold(
       key: mScaffoldState,
