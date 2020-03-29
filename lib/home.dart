@@ -7,6 +7,8 @@ import 'package:youmao/home_page.dart';
 import 'package:youmao/music_page.dart';
 import 'package:youmao/redux/GlobalAppState.dart';
 import 'package:youmao/redux/play/action.dart' as play;
+import 'package:youmao/redux/play/action.dart';
+import 'package:youmao/redux/play/action.dart';
 import 'package:youmao/soud_page.dart';
 import 'package:redux/redux.dart';
 import 'package:youmao/utils/tools.dart';
@@ -59,9 +61,9 @@ class HomeManagerState extends State<HomeManagerWidget> with SingleTickerProvide
           // 当前播放歌曲长度等于当前播放进度
           //      精确度：秒
           //TODO
-//          if (stringDurationToDouble(d.toString().substring(2, 7)) == stringDurationToDouble(playState.duration.toString().substring(2, 7))) {
-//            this.globalStore.dispatch(playState.pl)
-//          }
+          if (stringDurationToDouble(d.toString().substring(2, 7)) == stringDurationToDouble(playState.duration.toString().substring(2, 7))) {
+            this.globalStore.dispatch(play.playNextSong);
+          }
 
         }
     );

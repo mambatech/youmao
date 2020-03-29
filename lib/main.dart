@@ -1,5 +1,6 @@
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:youmao/model/model.dart';
 import 'package:youmao/redux/GlobalAppState.dart';
@@ -13,39 +14,42 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:redux/redux.dart';
 
 void main() {
-  final globalStore = Store<GlobalAppState>(appReducer, middleware: [thunkMiddleware], initialState: GlobalAppState(
+  final store = Store<GlobalAppState>(appReducer, middleware: [thunkMiddleware], initialState: GlobalAppState(
     commonState: CommonState.initState(),
     globalPlayState: GlobalPlayState.initState(),
   ));
-  runApp(MyApp(globalStore));
+  runApp(MyApp(store));
 }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
-  Store<GlobalAppState> globalStore;
+  final Store<GlobalAppState> globalStore;
   MyApp(this.globalStore);
   @override
   Widget build(BuildContext context) {
 
-    return new DynamicTheme(
-      defaultBrightness: Brightness.light,
-      data: (brightness) => new ThemeData(
-        primarySwatch: Colors.green,
-        accentColor: Colors.greenAccent,
-        fontFamily: 'Raleway',
-        brightness: brightness,
-      ),
-      themedWidgetBuilder: (context, theme) {
-        return ScopedModel<SongModel>(
-          model: new SongModel(),
-          child: new MaterialApp(
-            title: '友猫',
-            theme: theme,
-            debugShowCheckedModeBanner: false,
-            home: new SplashScreen(globalStore),
-          ),
-        );
-      },
+    return StoreProvider(
+        store: globalStore,
+        child: new DynamicTheme(
+                defaultBrightness: Brightness.light,
+                data: (brightness) => new ThemeData(
+                  primarySwatch: Colors.green,
+                  accentColor: Colors.greenAccent,
+                  fontFamily: 'Raleway',
+                  brightness: brightness,
+                ),
+                themedWidgetBuilder: (context, theme) {
+                  return ScopedModel<SongModel>(
+                    model: new SongModel(),
+                    child: new MaterialApp(
+                      title: '友猫',
+                      theme: theme,
+                      debugShowCheckedModeBanner: false,
+                      home: new SplashScreen(globalStore),
+                    ),
+                  );
+                },
+              )
     );
 
   }
