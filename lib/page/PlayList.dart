@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:youmao/components/commonText.dart';
+import 'package:youmao/components/customBottomNavigationBar.dart';
 import 'package:youmao/redux/common/CommonActions.dart';
 import 'package:youmao/utils/api.dart';
 import 'package:youmao/utils/commonFetch.dart';
@@ -79,6 +80,7 @@ class PlayListState extends State<PlayList> {
       converter: (store) => store.state,
       builder: (BuildContext context, state) {
         return Scaffold(
+          bottomNavigationBar: CustomBottomNavigationBar(),
           body: playListData == null?
             Container(
               child: Center(

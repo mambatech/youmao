@@ -54,6 +54,29 @@ ThunkAction<GlobalAppState> playNextSong = (Store<GlobalAppState> store) async {
   store.dispatch(_songListAction);
 };
 
+ThunkAction<GlobalAppState> playePrevSong = (Store<GlobalAppState> store) async {
+  Map _songListActionPayload = new Map();
+  dynamic state = store.state.globalPlayState;
+  Map songDetail = {};
+  dynamic _songListAction = new Map();
+  if (state.songIndex - 1 < 0) {
+    store.state.commonState.toastMessage = '没有上一曲了~';
+    store.state.commonState.toastStatus = true;
+  }
+  dynamic songLyr = await getData('lyric', {
+    'id': state.songList[state.songIndex - 1]
+  });
+  songDetail = await getSongDetail(int.parse(state.songList[state.songIndex - 1]));
+  _songListActionPayload['songUrl'] = 'http://music.163.com/song/media/outer/url?id=' + state.songList[state.songIndex - 1] + '.mp3';
+  songDetail['songLyr'] = songLyr;
+  _songListActionPayload['songDetail'] = songDetail;
+  List<int> coverMainColor = await getColorFromUrl(songDetail['al']['picUrl']);
+  _songListActionPayload['coverMainColor'] = coverMainColor;
+  _songListAction['payload'] = _songListActionPayload;
+  _songListAction['type'] = Actions.prevSong;
+  store.dispatch(_songListAction);
+};
+
 ThunkAction<GlobalAppState> addPlayList (action) {
   print('william ---------------> addPlayList Action');
   return (Store<GlobalAppState> store) async {

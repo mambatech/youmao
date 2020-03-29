@@ -3,6 +3,7 @@
  */
 import 'package:flutter/material.dart';
 import 'package:youmao/components/RecommedList.dart';
+import 'package:youmao/components/customBottomNavigationBar.dart';
 import 'package:youmao/utils/api.dart';
 
 import 'components/HomeBanner.dart';
@@ -54,8 +55,8 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text(widget.mTitle),),body:
-      SingleChildScrollView(
+    return Scaffold(appBar: AppBar(title: Text(widget.mTitle),),
+      body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -72,6 +73,8 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
             ),
           ],
         ),
-    ),);
+    ),
+    bottomNavigationBar: CustomBottomNavigationBar(),
+    );
   }
 }

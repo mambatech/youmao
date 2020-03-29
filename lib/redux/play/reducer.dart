@@ -4,7 +4,7 @@
 import 'GlobalPlayState.dart';
 import 'action.dart';
 
-List<dynamic> combinLyric (String source) {
+List<dynamic> combinLyric(String source) {
   List<dynamic> outputLyric = [];
   source.split('[').forEach((item) {
     List<String> splitItem = item.split('');
@@ -12,7 +12,7 @@ List<dynamic> combinLyric (String source) {
     bool isAccess = true;
     try {
       int.parse(splitItem[0] + splitItem[1]);
-    } catch (err) {
+    } catch(err){
       isAccess = false;
     }
     if (isAccess) {
@@ -21,7 +21,6 @@ List<dynamic> combinLyric (String source) {
   });
   return outputLyric;
 }
-
 
 GlobalPlayState playStateReducer(GlobalPlayState state, action) {
 
