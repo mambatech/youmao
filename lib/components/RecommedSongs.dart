@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -6,9 +9,8 @@ import 'package:youmao/redux/GlobalAppState.dart';
 import 'package:youmao/redux/common/CommonActions.dart';
 import '../components/commonText.dart';
 import 'package:youmao/redux/play/action.dart' as playControllerActions;
+import 'package:path_provider/path_provider.dart';
 
-import '../utils/commonFetch.dart';
-import '../utils//api.dart';
 
 //首页播放列表
 class CatSongs extends StatelessWidget {
@@ -147,9 +149,15 @@ class CatSongsColumn extends StatelessWidget {
                     _playListActionPayload['coverImgUrl'] = song['coverImgUrl'];
 //                    _playListActionPayload['songUrl'] = 'http://music.163.com/song/media/outer/url?id=' + song['id'].toString() + '.mp3';
                     _playListActionPayload['songUrl'] = song['fileUrl'];
-                    playListAction['payload'] = _playListActionPayload;
-                    playListAction['type'] = playControllerActions.Actions.addPlayList;
-                    callback();
+                    _playListActionPayload['localplay'] = true;
+
+                    localPlay(song['id'].toString(), song['fileUrl'], context).then((String value){
+                      _playListActionPayload['songUrl'] = value;
+                      playListAction['payload'] = _playListActionPayload;
+                      playListAction['type'] = playControllerActions.Actions.addPlayList;
+                      callback();
+                    });
+
                   },
                   icon: Icon(
                     Icons.play_arrow,
@@ -165,6 +173,22 @@ class CatSongsColumn extends StatelessWidget {
     }
     return recommendSongsColumn;
   }
+
+  Future<ByteData> loadAsset(String path, BuildContext context) async {
+    return await DefaultAssetBundle.of(context).load(path);
+  }
+
+  Future<String> localPlay(String id, String path, BuildContext context) async {
+    final dir = await getApplicationDocumentsDirectory();
+    final file = File('${dir.path}/cat$id.mp3');
+    final bytes = await loadAsset(path, context);
+    await file.writeAsBytes(bytes.buffer.asUint8List());
+//    print('william ---------nishuonexxxxxx--${file.path}');
+    return file.path;
+//    final result = await audioPlayer.play(file.path, isLocal: true);
+  }
+
+
 
   Widget build(BuildContext context) {
     return Column(

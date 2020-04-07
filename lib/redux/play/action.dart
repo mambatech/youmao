@@ -1,4 +1,6 @@
-/// date : 2020/3/29 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
+/// date : 2020/3/29
 /// created by william yuan
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:redux/redux.dart';
@@ -6,6 +8,8 @@ import 'package:youmao/redux/GlobalAppState.dart';
 import 'package:color_thief_flutter/color_thief_flutter.dart';
 import 'package:youmao/utils/api.dart';
 import 'package:youmao/utils/commonFetch.dart';
+import 'dart:ui' as ui;
+
 
 enum Actions {
   pause,
@@ -82,7 +86,10 @@ ThunkAction<GlobalAppState> addPlayList (action) {
   return (Store<GlobalAppState> store) async {
     List<int> coverMainColor;
     if(action['payload']['coverImgUrl'] != null) {
-      coverMainColor = await getColorFromUrl(action['payload']['coverImgUrl']);
+//      coverMainColor = await getColorFromUrl);
+      final coverImage = await load(action['payload']['coverImgUrl']);
+      coverMainColor = await getColorFromImage(coverImage);
+
     } else {
       coverMainColor = await getColorFromUrl(action['payload']['songDetail']['al']['picUrl']);
     }
@@ -90,4 +97,12 @@ ThunkAction<GlobalAppState> addPlayList (action) {
     action['payload']['coverMainColor'] = coverMainColor;
     store.dispatch(action);
   };
+
+}
+
+Future<ui.Image> load(String asset) async {
+  ByteData data = await rootBundle.load(asset);
+  ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List());
+  ui.FrameInfo fi = await codec.getNextFrame();
+  return fi.image;
 }

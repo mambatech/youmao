@@ -18,6 +18,7 @@ void main() {
     commonState: CommonState.initState(),
     globalPlayState: GlobalPlayState.initState(),
   ));
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp(store));
 }
 
