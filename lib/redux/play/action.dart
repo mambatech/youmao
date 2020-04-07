@@ -80,7 +80,13 @@ ThunkAction<GlobalAppState> playePrevSong = (Store<GlobalAppState> store) async 
 ThunkAction<GlobalAppState> addPlayList (action) {
   print('william ---------------> addPlayList Action');
   return (Store<GlobalAppState> store) async {
-    List<int> coverMainColor = await getColorFromUrl(action['payload']['songDetail']['al']['picUrl']);
+    List<int> coverMainColor;
+    if(action['payload']['coverImgUrl'] != null) {
+      coverMainColor = await getColorFromUrl(action['payload']['coverImgUrl']);
+    } else {
+      coverMainColor = await getColorFromUrl(action['payload']['songDetail']['al']['picUrl']);
+    }
+
     action['payload']['coverMainColor'] = coverMainColor;
     store.dispatch(action);
   };

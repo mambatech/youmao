@@ -53,6 +53,25 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/launch.png
+    - assets/datas/hot.json
+    - assets/datas/catsound.json
+    - assets/datas/banner.json
+    - assets/images/cat/1.jpg
+    - assets/images/cat/2.jpg
+    - assets/images/cat/banner/11.jpg
+    - assets/images/cat/banner/13.jpg
+    - assets/images/cat/banner/14.jpg
+#    猫叫资源，跟首页列表顺序对应
+    - assets/images/cat/sound/7.jpg
+    - assets/images/cat/sound/9.jpg
+    - assets/images/cat/sound/18.jpg
+    - assets/images/cat/sound/sleep.jpg
+    - assets/images/cat/sound/12.jpg
+    - assets/images/cat/sound/5.jpg
+    - assets/images/cat/sound/4.jpg
+    - assets/images/cat/sound/3.jpg
+    - assets/images/cat/sound/6.jpg
+
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

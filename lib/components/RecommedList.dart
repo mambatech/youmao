@@ -13,6 +13,7 @@ class RecommendList extends StatelessWidget {
 
   RecommendList(this.recommendList, this.listTitle, this.des);
 
+  //创建推荐列表的推荐item UI
   Widget createSongListRow (List<Map<String, dynamic>> rowData) {
     return SizedBox(
       height: 170,
@@ -23,7 +24,7 @@ class RecommendList extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
               onTap: () {
-                print("william------------->onTap");
+                //print("william------------->onTap");
                 Navigator.push(
                     context,
                     MaterialPageRoute(

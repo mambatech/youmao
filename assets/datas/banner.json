@@ -1,0 +1,17 @@
+{
+
+  "banners": [
+    {
+      "name": "banner1",
+      "url": "assets/images/cat/banner/13.jpg"
+    },
+    {
+      "name": "Baidu",
+      "url": "assets/images/cat/banner/11.jpg"
+    },
+    {
+      "name": "SoSo",
+      "url": "assets/images/cat/banner/14.jpg"
+    }
+  ]
+}

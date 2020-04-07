@@ -1,12 +1,18 @@
+import 'dart:convert';
+
 /**
  * create by william 2020/3/14
  */
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:youmao/components/RecommedList.dart';
 import 'package:youmao/components/customBottomNavigationBar.dart';
+import 'package:youmao/redux/GlobalAppState.dart';
 import 'package:youmao/utils/api.dart';
-
+import 'package:youmao/redux/common/CommonActions.dart';
 import 'components/HomeBanner.dart';
+import 'components/RecommedSongs.dart';
+import 'components/commonText.dart';
 
 class HomePage extends StatefulWidget {
   String mTitle;
@@ -21,6 +27,13 @@ class HomePage extends StatefulWidget {
 class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
 
   List<dynamic> recommendSongList;
+  List<dynamic> hotSongList;
+  List<dynamic> popularCatSound;
+  List<dynamic> newSongs;
+  List<dynamic> bannerList;
+
+  //是否动态加载更新
+  bool newSongsRequestOver = false;
 
   //翻页后保留tab状态
   @override
@@ -31,8 +44,66 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
     // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      fetchBannerList();
       fetchRecommendSongList();
+      fetchHotList();
+      fetchCatSoundList();
     });
+  }
+
+
+  void fetchBannerList() {
+    Future<String> bannerString = DefaultAssetBundle.of(context).loadString("assets/datas/banner.json");
+    bannerString.then((String value){
+      setState(() {
+        dynamic jsonresult = jsonDecode(value);
+        print("william test json result -------- $jsonresult");
+        bannerList = jsonresult['banners'];
+      });
+    });
+  }
+
+
+  void fetchHotList() {
+    Future<String> hotstring = DefaultAssetBundle.of(context).loadString("assets/datas/hot.json");
+    hotstring.then((String value){
+        setState(() {
+          dynamic jsonresult = jsonDecode(value);
+          print("william test json result -------- $jsonresult");
+        });
+    });
+  }
+
+  void switchIsRequesting() {
+    StoreProvider.of<GlobalAppState>(context).dispatch(switchIsRequestingAction);
+  }
+
+  void fetchCatSoundList() async {
+//    switchIsRequesting();
+//    var _newSongs = await getData('newSongs', {});
+//    switchIsRequesting();
+    Future<String> catstring = DefaultAssetBundle.of(context).loadString("assets/datas/catsound.json");
+    catstring.then((String value){
+      setState(() {
+        dynamic jsonresult = jsonDecode(value);
+        print("william test json result -------- $jsonresult");
+        newSongs = jsonresult['playlists'];
+        newSongsRequestOver = true;
+      });
+    });
+    
+//    if(_newSongs == '请求错误') {
+//      return;
+//    }
+//    if(this.mounted) {
+//      setState(() {
+//        newSongs = _newSongs['result'];
+////        newSongsRequestOver = true;
+//      });
+//    }
+//    for (int i = 0;i < 9;i ++) {
+//      fetchNewSongHotComments(_newSongs['result'], _newSongs['result'][i]['id'], i);
+//    }
   }
 
   void fetchRecommendSongList() async {
@@ -50,8 +121,8 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
         this.recommendSongList = _hotSongList['playlists'];
       });
     }
-  }
 
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,12 +132,35 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             //TODO 预设图片
-            HomeBanner(null),
+            HomeBanner(bannerList),
             Container(
               margin: EdgeInsets.only(top: 20),
               child: Column(
                 children: <Widget>[
+                  newSongsRequestOver?
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.fromLTRB(20, 0, 0, 10),
+                        child: CommonText(
+                            '常用猫语',
+                            13,
+                            1,
+                            Colors.black,
+                            FontWeight.bold,
+                            TextAlign.start
+                        ),
+                      ),
+                      CatSongs(newSongs, '最新流行歌曲')
+                    ],
+                  )
+                      :
                   Container(),
+                  RecommendList(recommendSongList, '最热歌单', '最新流行歌单'),
+                  RecommendList(recommendSongList, '推荐歌单', '最新推荐歌单'),
+                  RecommendList(recommendSongList, '最热歌单', '最新流行歌单'),
+                  RecommendList(recommendSongList, '最热歌单', '最新流行歌单'),
                   RecommendList(recommendSongList, '最热歌单', '最新流行歌单'),
                 ],
               ),

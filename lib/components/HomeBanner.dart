@@ -11,12 +11,12 @@ class HomeBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return bannerList == null
+    return bannerList != null
         ?
     Container(
       width: MediaQuery.of(context).size.width,
       height: 160,
-      color: Colors.grey,
+      color: Colors.white,
         margin: EdgeInsets.only(top:0),
         child: Swiper(
             itemBuilder: (BuildContext context, int index) {
@@ -24,7 +24,8 @@ class HomeBanner extends StatelessWidget {
                   margin: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width / 100, 0, MediaQuery.of(context).size.width / 100, 0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: Image.asset("images/launch.png", height:200, width: 200, fit: BoxFit.cover,),
+                  //  child: Image.asset("assets/images/cat/11.jpg", height:200, width: 200, fit: BoxFit.cover,),
+                    child: Image.asset(bannerList[index]['url'], height:200, width: 200, fit: BoxFit.cover,),
                   )
               );
             },

@@ -39,8 +39,13 @@ GlobalPlayState playStateReducer(GlobalPlayState state, action) {
       if (action['payload']['songList'] != null) {
         state.songList = action['payload']['songList'];
       }
-      if (action['payload']['songDetail']['songLyr']['lrc'] != null && action['payload']['songDetail']['songLyr']['lrc']['lyric'] != null) {
-        action['payload']['songDetail']['lyric'] = combinLyric(action['payload']['songDetail']['songLyr']['lrc']['lyric']);
+      if(action['payload']['songDetail'] != null) {
+        if (action['payload']['songDetail']['songLyr']['lrc'] != null &&
+            action['payload']['songDetail']['songLyr']['lrc']['lyric'] !=
+                null) {
+          action['payload']['songDetail']['lyric'] = combinLyric(
+              action['payload']['songDetail']['songLyr']['lrc']['lyric']);
+        }
       }
       state.songIndex = action['payload']['songIndex'];
       state.playList.add(action['payload']['songDetail']);
