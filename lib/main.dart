@@ -34,8 +34,8 @@ class MyApp extends StatelessWidget {
         child: new DynamicTheme(
                 defaultBrightness: Brightness.light,
                 data: (brightness) => new ThemeData(
-                  primarySwatch: Colors.green,
-                  accentColor: Colors.greenAccent,
+                  primarySwatch: Colors.pink,
+                  accentColor: Colors.pinkAccent,
                   fontFamily: 'Raleway',
                   brightness: brightness,
                 ),

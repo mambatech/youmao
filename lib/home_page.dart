@@ -131,6 +131,7 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+            Container(margin: EdgeInsets.only(top: 10),),
             //TODO 预设图片
             HomeBanner(bannerList),
             Container(
