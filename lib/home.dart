@@ -36,7 +36,7 @@ class HomeManagerState extends State<HomeManagerWidget> with SingleTickerProvide
   Store<GlobalAppState> globalStore;
   int mCurrentIndex = 0;
   //默认
-  String mTitle = "友猫";
+  String mTitle = "宠爱";
   //TODO
   bool mIsLoading = false;
   final mPageController = PageController();
