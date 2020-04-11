@@ -36,8 +36,8 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   bool newSongsRequestOver = false;
 
   //翻页后保留tab状态
-  @override
-  bool get wantKeepAlive => true;
+//  @override
+//  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -127,7 +127,7 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
     hotString.then((String value) {
       setState(() {
         dynamic jsonresult = jsonDecode(value);
-        print("william test json result -------- $jsonresult");
+//        print("william test json result -------- $jsonresult");
         recommendSongList = jsonresult['playlists'];
       });
     });
@@ -152,7 +152,9 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.mTitle),
+        title: Text(widget.mTitle, style: TextStyle(color: Colors.black),textAlign: TextAlign.center,),
+        backgroundColor: Colors.white,
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(

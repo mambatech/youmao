@@ -83,7 +83,7 @@ class SplashState extends State<SplashScreen> {
     setState(() {
       mIsLoading = true;
     });
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(Duration(milliseconds: 200), () {
       Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (context){
         return new HomeManagerWidget(globalStore);
       }));
