@@ -50,21 +50,23 @@ class HomeBanner extends StatelessWidget {
                   margin: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width / 100, 0, MediaQuery.of(context).size.width / 100, 0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: CachedNetworkImage(
-                      imageUrl: bannerList[index]['imageUrl'],
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      height: MediaQuery.of(context).size.width / 3,
-                      fit: BoxFit.cover,
-                      placeholder: (context, url) => Container(
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        height: MediaQuery.of(context).size.width / 3,
-                        color: Colors.grey,
-                      ),
-                    ),
+//                    child: CachedNetworkImage(
+//                      imageUrl: bannerList[index]['imageUrl'],
+//                      width: MediaQuery.of(context).size.width * 0.9,
+//                      height: MediaQuery.of(context).size.width / 3,
+//                      fit: BoxFit.cover,
+//                      placeholder: (context, url) => Container(
+//                        width: MediaQuery.of(context).size.width * 0.9,
+//                        height: MediaQuery.of(context).size.width / 3,
+//                        color: Colors.grey,
+//                      ),
+//                    ),
+//                    child: Image.asset(bannerList[index]['url'], height:200, width: 200, fit: BoxFit.cover,),
                   )
               );
             },
-            itemCount: bannerList.length,
+//            itemCount: bannerList.length,
+            itemCount: 3,
             control: SwiperControl(
                 iconNext: null,
                 iconPrevious: null

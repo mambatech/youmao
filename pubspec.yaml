@@ -56,6 +56,7 @@ flutter:
     - assets/datas/hot.json
     - assets/datas/catsound.json
     - assets/datas/banner.json
+    - assets/datas/new.json
     - assets/images/cat/1.jpg
     - assets/images/cat/2.jpg
     - assets/images/cat/banner/11.jpg
@@ -71,7 +72,16 @@ flutter:
     - assets/images/cat/sound/4.jpg
     - assets/images/cat/sound/3.jpg
     - assets/images/cat/sound/6.jpg
-#      猫叫
+#    热门和新的猫图片
+    - assets/images/cat/hot/1.jpg
+    - assets/images/cat/hot/2.jpg
+    - assets/images/cat/hot/3.jpg
+    - assets/images/cat/hot/4.jpg
+    - assets/images/cat/hot/5.jpg
+    - assets/images/cat/hot/6.jpg
+    - assets/images/cat/hot/7.jpg
+    - assets/images/cat/hot/8.jpg
+#    猫叫
     - assets/cat/cat_0.mp3
     - assets/cat/cat_1.mp3
     - assets/cat/cat_3.mp3
@@ -81,6 +91,14 @@ flutter:
     - assets/cat/cat_8.mp3
     - assets/cat/cat_10.mp3
     - assets/cat/cat_28.mp3
+    - assets/cat/cat_aggressive.mp3
+    - assets/cat/cat_suoni.mp3
+    - assets/cat/cat_walk.mp3
+    - assets/cat/cat_simonsays.mp3
+    - assets/cat/cat_grumpy.mp3
+    - assets/cat/cat_gutti.mp3
+    - assets/cat/cat_scooter.mp3
+    - assets/cat/cat_luna.mp3
 
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg

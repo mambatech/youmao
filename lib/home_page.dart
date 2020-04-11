@@ -29,8 +29,9 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   List<dynamic> recommendSongList;
   List<dynamic> hotSongList;
   List<dynamic> popularCatSound;
-  List<dynamic> newSongs;
+  List<dynamic> basicList;
   List<dynamic> bannerList;
+  List<dynamic> newList;
 
   //是否动态加载更新
   bool newSongsRequestOver = false;
@@ -48,6 +49,7 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
       fetchRecommendSongList();
       fetchHotList();
       fetchCatSoundList();
+      fetchNewList();
     });
   }
 
@@ -87,7 +89,7 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
       setState(() {
         dynamic jsonresult = jsonDecode(value);
         print("william test json result -------- $jsonresult");
-        newSongs = jsonresult['playlists'];
+        basicList = jsonresult['playlists'];
         newSongsRequestOver = true;
       });
     });
@@ -106,21 +108,43 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
 //    }
   }
 
-  void fetchRecommendSongList() async {
-//    switchIsRequesting();
-    var _hotSongList = await getData('hotPlaylist', {
-      'limit': '10',
-      'order': 'hot'
-    });
-//    switchIsRequesting();
-    if (_hotSongList == 'response error') {
-      return;
-    }
-    if(this.mounted) {
+  void fetchNewList() async {
+    Future<String> newString = DefaultAssetBundle.of(context).loadString(
+        "assets/datas/new.json");
+    newString.then((String value) {
       setState(() {
-        this.recommendSongList = _hotSongList['playlists'];
+        dynamic jsonresult = jsonDecode(value);
+        print("william test json result -------- $jsonresult");
+        newList = jsonresult['playlists'];
       });
-    }
+    });
+  }
+
+  void fetchRecommendSongList() async {
+
+    Future<String> hotString = DefaultAssetBundle.of(context).loadString("assets/datas/hot.json");
+    hotString.then((String value){
+      setState(() {
+        dynamic jsonresult = jsonDecode(value);
+        print("william test json result -------- $jsonresult");
+        recommendSongList = jsonresult['playlists'];
+      });
+    });
+
+////    switchIsRequesting();
+//    var _hotSongList = await getData('hotPlaylist', {
+//      'limit': '10',
+//      'order': 'hot'
+//    });
+////    switchIsRequesting();
+//    if (_hotSongList == 'response error') {
+//      return;
+//    }
+//    if(this.mounted) {
+//      setState(() {
+//        this.recommendSongList = _hotSongList['playlists'];
+//      });
+//    }
 
   }
 
@@ -153,16 +177,13 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
                             TextAlign.start
                         ),
                       ),
-                      CatSongs(newSongs, '最新流行歌曲')
+                      CatSongs(basicList, '最新流行歌曲')
                     ],
                   )
                       :
                   Container(),
-                  RecommendList(recommendSongList, '最热歌单', '最新流行歌单'),
-                  RecommendList(recommendSongList, '推荐歌单', '最新推荐歌单'),
-                  RecommendList(recommendSongList, '最热歌单', '最新流行歌单'),
-                  RecommendList(recommendSongList, '最热歌单', '最新流行歌单'),
-                  RecommendList(recommendSongList, '最热歌单', '最新流行歌单'),
+                  RecommendList(recommendSongList, '最热猫单', '最热流行猫曲'),
+                  RecommendList(newList, '猫你喜欢', '最新猫猫单曲'),
                 ],
               ),
             ),

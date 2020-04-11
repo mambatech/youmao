@@ -35,7 +35,7 @@ class SplashState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
-      backgroundColor: Colors.teal,
+      backgroundColor: Colors.pinkAccent,
       body: SafeArea(
         child: new Container(
           height: MediaQuery.of(context).size.height,
@@ -46,15 +46,16 @@ class SplashState extends State<SplashScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.asset("images/launch.png", height:200, width: 200, fit: BoxFit.cover,),
-
+//                  Image.asset("images/launch.png", height:200, width: 200, fit: BoxFit.cover,),
+//                    Text('宠爱',
+//                    style: TextStyle(color: Colors.white, fontSize: 40),),
                 ],
               ),
               Container(
                 margin: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height / 5),
                 child: Text(
-                  "友猫",
+                  "宠爱",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 40,
@@ -68,9 +69,9 @@ class SplashState extends State<SplashScreen> {
                   ):Container(),
                 ),
               ),
-              Text("Seting up...",
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              )
+//              Text("Seting up...",
+//                style: TextStyle(color: Colors.white, fontSize: 20),
+//              )
             ],
           ),
         ),

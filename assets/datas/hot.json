@@ -1,25 +1,35 @@
 {
-  "name": "JSON中国",
-  "url": "http://www.json.org.cn",
-  "page": 88,
-  "isNonProfit": true,
-  "address": {
-    "street": "浙大路38号.",
-    "city": "浙江杭州",
-    "country": "中国"
-  },
-  "links": [
+  "playlists": [
     {
-      "name": "Google",
-      "url": "http://www.google.com"
+      "id": 1,
+      "name": "微风放松的午后",
+      "coverImgUrl": "assets/images/cat/hot/1.jpg",
+      "fileUrl": "assets/cat/cat_aggressive.mp3",
+      "description": "卖萌耍宝"
+    }, {
+      "id": 2,
+      "name": "静谧繁星的夜空",
+      "coverImgUrl": "assets/images/cat/hot/2.jpg",
+      "fileUrl": "assets/cat/cat_suoni.mp3",
+      "description": "卖萌耍宝"
     },
+      {
+        "id": 3,
+        "name": "迷失的猫步",
+        "coverImgUrl": "assets/images/cat/hot/3.jpg",
+        "fileUrl": "assets/cat/cat_walk.mp3",
+        "description": "卖萌耍宝"
+      },
     {
-      "name": "Baidu",
-      "url": "http://www.baidu.com"
-    },
-    {
-      "name": "SoSo",
-      "url": "http://www.SoSo.com"
+      "id": 4,
+      "name": "碎碎密语",
+      "coverImgUrl": "assets/images/cat/hot/4.jpg",
+      "fileUrl": "assets/cat/cat_simonsays.mp3",
+      "description": "卖萌耍宝"
     }
-  ]
+  ],
+  "total": 3,
+  "code": 200,
+  "more": false,
+  "cat": "全部"
 }
