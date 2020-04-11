@@ -167,8 +167,14 @@ class RecommendList extends StatelessWidget {
               ],
             ),
 //查看更多按钮取消
-//            Container(
+            Container(
 //              padding: EdgeInsets.fromLTRB(5, 1, 5, 1),
+//              child: new IconButton(icon: Icon(Icons.keyboard_arrow_right)),
+//              child: Image.asset(
+//                'assets/more.png',
+//                width: 20,
+//                height: 20,
+//              ),
 //              child: Text(
 //              '查看更多',
 //                style: TextStyle(
@@ -182,7 +188,7 @@ class RecommendList extends StatelessWidget {
 //                      width: 1,
 //                      style: BorderStyle.solid),
 //                  borderRadius: BorderRadius.circular(7)),
-//            )
+            )
           ],
         ),
       )

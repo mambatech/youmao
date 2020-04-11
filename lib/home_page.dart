@@ -15,6 +15,7 @@ import 'components/commonText.dart';
 
 class HomePage extends StatefulWidget {
   String mTitle;
+
   HomePage(this.mTitle);
 
   @override
@@ -24,7 +25,6 @@ class HomePage extends StatefulWidget {
 }
 
 class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
-
   List<dynamic> recommendSongList;
   List<dynamic> hotSongList;
   List<dynamic> popularCatSound;
@@ -53,44 +53,48 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   }
 
   void fetchBannerList() {
-    Future<String> bannerString = DefaultAssetBundle.of(context).loadString("assets/datas/banner.json");
-    bannerString.then((String value){
+    Future<String> bannerString =
+        DefaultAssetBundle.of(context).loadString("assets/datas/banner.json");
+    bannerString.then((String value) {
       setState(() {
         dynamic jsonresult = jsonDecode(value);
-        print("william test json result -------- $jsonresult");
+//        print("william test json result -------- $jsonresult");
         bannerList = jsonresult['banners'];
       });
     });
   }
 
   void fetchHotList() {
-    Future<String> hotstring = DefaultAssetBundle.of(context).loadString("assets/datas/hot.json");
-    hotstring.then((String value){
-        setState(() {
-          dynamic jsonresult = jsonDecode(value);
-          print("william test json result -------- $jsonresult");
-        });
+    Future<String> hotstring =
+        DefaultAssetBundle.of(context).loadString("assets/datas/hot.json");
+    hotstring.then((String value) {
+      setState(() {
+        dynamic jsonresult = jsonDecode(value);
+//          print("william test json result -------- $jsonresult");
+      });
     });
   }
 
   void switchIsRequesting() {
-    StoreProvider.of<GlobalAppState>(context).dispatch(switchIsRequestingAction);
+    StoreProvider.of<GlobalAppState>(context)
+        .dispatch(switchIsRequestingAction);
   }
 
   void fetchCatSoundList() async {
 //    switchIsRequesting();
 //    var _newSongs = await getData('newSongs', {});
 //    switchIsRequesting();
-    Future<String> catstring = DefaultAssetBundle.of(context).loadString("assets/datas/catsound.json");
+    Future<String> catstring =
+        DefaultAssetBundle.of(context).loadString("assets/datas/catsound.json");
     catstring.then((String value) {
       setState(() {
         dynamic jsonresult = jsonDecode(value);
-        print("william test json result -------- $jsonresult");
+//        print("william test json result -------- $jsonresult");
         basicList = jsonresult['playlists'];
         newSongsRequestOver = true;
       });
     });
-    
+
 //    if(_newSongs == '请求错误') {
 //      return;
 //    }
@@ -106,8 +110,8 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   }
 
   void fetchNewList() async {
-    Future<String> newString = DefaultAssetBundle.of(context).loadString(
-        "assets/datas/new.json");
+    Future<String> newString =
+        DefaultAssetBundle.of(context).loadString("assets/datas/new.json");
     newString.then((String value) {
       setState(() {
         dynamic jsonresult = jsonDecode(value);
@@ -118,9 +122,9 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   }
 
   void fetchRecommendSongList() async {
-
-    Future<String> hotString = DefaultAssetBundle.of(context).loadString("assets/datas/hot.json");
-    hotString.then((String value){
+    Future<String> hotString =
+        DefaultAssetBundle.of(context).loadString("assets/datas/hot.json");
+    hotString.then((String value) {
       setState(() {
         dynamic jsonresult = jsonDecode(value);
         print("william test json result -------- $jsonresult");
@@ -142,43 +146,63 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
 //        this.recommendSongList = _hotSongList['playlists'];
 //      });
 //    }
-
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text(widget.mTitle),),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.mTitle),
+      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Container(margin: EdgeInsets.only(top: 10),),
+            Container(
+              margin: EdgeInsets.only(top: 10),
+            ),
             //TODO 预设图片
             HomeBanner(bannerList),
             Container(
               margin: EdgeInsets.only(top: 20),
               child: Column(
                 children: <Widget>[
-                  newSongsRequestOver?
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.fromLTRB(20, 0, 0, 10),
-                        child: CommonText(
-                            '常用猫语',
-                            13,
-                            1,
-                            Colors.black,
-                            FontWeight.bold,
-                            TextAlign.start
-                        ),
-                      ),
-                      CatSongs(basicList, '最新流行歌曲')
-                    ],
-                  )
-                      :
-                  Container(),
+                  newSongsRequestOver
+                      ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                                margin: EdgeInsets.fromLTRB(20, 0, 0, 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Container(
+                                            child: CommonText(
+                                                '常用猫语',
+                                                13,
+                                                1,
+                                                Colors.black,
+                                                FontWeight.bold,
+                                                TextAlign.start)),
+                                      ],
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.fromLTRB(5, 1, 5, 1),
+                                      child: new IconButton(
+                                          icon:
+                                              Icon(Icons.keyboard_arrow_right)),
+                                    ),
+                                  ],
+                                )),
+                            CatSongs(basicList, '最新流行歌曲')
+                          ],
+                        )
+                      : Container(),
                   RecommendList(recommendSongList, '最热猫单', '最热流行猫曲'),
                   RecommendList(newList, '猫你喜欢', '最新猫猫单曲'),
                 ],
@@ -186,8 +210,8 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
             ),
           ],
         ),
-    ),
-    bottomNavigationBar: CustomBottomNavigationBar(),
+      ),
+      bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
 }
