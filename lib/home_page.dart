@@ -8,7 +8,6 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:youmao/components/RecommedList.dart';
 import 'package:youmao/components/customBottomNavigationBar.dart';
 import 'package:youmao/redux/GlobalAppState.dart';
-import 'package:youmao/utils/api.dart';
 import 'package:youmao/redux/common/CommonActions.dart';
 import 'components/HomeBanner.dart';
 import 'components/RecommedSongs.dart';
@@ -53,7 +52,6 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
     });
   }
 
-
   void fetchBannerList() {
     Future<String> bannerString = DefaultAssetBundle.of(context).loadString("assets/datas/banner.json");
     bannerString.then((String value){
@@ -64,7 +62,6 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
       });
     });
   }
-
 
   void fetchHotList() {
     Future<String> hotstring = DefaultAssetBundle.of(context).loadString("assets/datas/hot.json");
@@ -85,7 +82,7 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
 //    var _newSongs = await getData('newSongs', {});
 //    switchIsRequesting();
     Future<String> catstring = DefaultAssetBundle.of(context).loadString("assets/datas/catsound.json");
-    catstring.then((String value){
+    catstring.then((String value) {
       setState(() {
         dynamic jsonresult = jsonDecode(value);
         print("william test json result -------- $jsonresult");
@@ -114,7 +111,7 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
     newString.then((String value) {
       setState(() {
         dynamic jsonresult = jsonDecode(value);
-        print("william test json result -------- $jsonresult");
+//        print("william test json result -------- $jsonresult");
         newList = jsonresult['playlists'];
       });
     });

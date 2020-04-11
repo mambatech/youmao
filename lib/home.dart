@@ -19,8 +19,7 @@ class HomeManagerWidget extends StatefulWidget {
   HomeManagerWidget(this.globalStore);
   final bottomItems = [
     new BottomItem("Home", Icons.home),
-    new BottomItem("Music", Icons.library_music),
-    new BottomItem("Sound", Icons.surround_sound),
+    new BottomItem("Settings", Icons.settings),
   ];
 
   @override
@@ -68,7 +67,7 @@ class HomeManagerState extends State<HomeManagerWidget> with SingleTickerProvide
         }
     );
 
-    mPages = [HomePage("首页"), MusicPage("音乐咯"), SoundPage("声音")];
+    mPages = [HomePage("首页"), MusicPage("音乐咯")];
   }
 
 
@@ -111,51 +110,51 @@ class HomeManagerState extends State<HomeManagerWidget> with SingleTickerProvide
           })
         ],
       ),
-      floatingActionButton: new FloatingActionButton(
-          child: new Icon(Icons.play_circle_filled),
-          onPressed: () {
-            //TODO 播放器悬浮球点击
-          }),
-      drawer: new Drawer(
-        //左边菜单栏
-        child: new Column(
-        children: <Widget>[
-          new UserAccountsDrawerHeader(accountName: new Text(mTitle), accountEmail: null, currentAccountPicture: CircleAvatar(
-            child: Image.asset("images/launch.png"),
-            backgroundColor: Colors.white,
-          ),),
-          new Column(
-            children: <Widget>[
-              new ListTile(
-                leading: new Icon(Icons.settings,
-                color: Theme.of(context).accentColor,),
-                title: new Text("Settings"),
-                onTap: () {
-                  //TODO 设置点击事件
-                },
-              ),
-              new ListTile(
-                leading: new Icon(Icons.info,
-                color: Theme.of(context).accentColor,),
-                title: new Text("About"),
-                onTap: (){
-                  //TODO about点击
-                },
-              ),
-              Divider(),
-              new ListTile(
-                leading: Icon(Icons.share,
-                color: Theme.of(context).accentColor,),
-                title: Text("Share"),
-                onTap: (){
-                  //TODO
-                },
-              ),
-            ],
-          ),
-        ],
-
-      ),),
+//      floatingActionButton: new FloatingActionButton(
+//          child: new Icon(Icons.play_circle_filled),
+//          onPressed: () {
+//            //TODO 播放器悬浮球点击
+//          }),
+//      drawer: new Drawer(
+//        //左边菜单栏
+//        child: new Column(
+//        children: <Widget>[
+//          new UserAccountsDrawerHeader(accountName: new Text(mTitle), accountEmail: null, currentAccountPicture: CircleAvatar(
+//            child: Image.asset("images/launch.png"),
+//            backgroundColor: Colors.white,
+//          ),),
+//          new Column(
+//            children: <Widget>[
+//              new ListTile(
+//                leading: new Icon(Icons.settings,
+//                color: Theme.of(context).accentColor,),
+//                title: new Text("Settings"),
+//                onTap: () {
+//                  //TODO 设置点击事件
+//                },
+//              ),
+//              new ListTile(
+//                leading: new Icon(Icons.info,
+//                color: Theme.of(context).accentColor,),
+//                title: new Text("About"),
+//                onTap: (){
+//                  //TODO about点击
+//                },
+//              ),
+//              Divider(),
+//              new ListTile(
+//                leading: Icon(Icons.share,
+//                color: Theme.of(context).accentColor,),
+//                title: Text("Share"),
+//                onTap: (){
+//                  //TODO
+//                },
+//              ),
+//            ],
+//          ),
+//        ],
+//
+//      ),),
       body: mIsLoading?new Center(
         child: new CircularProgressIndicator(),
       )
