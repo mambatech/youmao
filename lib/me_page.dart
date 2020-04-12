@@ -7,20 +7,30 @@ class MePage extends StatefulWidget {
 
   @override
   MePageState createState() {
-    return MePageState();
+    return MePageState(title);
   }
 }
 
 class MePageState extends State<MePage> {
   final List<String> entries = <String>['隐私协议','用户协议'];
 
+  String title;
+  MePageState(this.title);
+
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-        padding: const EdgeInsets.all(8),
-        itemCount: entries.length,
-        itemBuilder: (BuildContext context, int index) => _listTile(entries[index],index,context),
-        separatorBuilder: (BuildContext context, int index) => const Divider());
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title, style: TextStyle(color: Colors.black),textAlign: TextAlign.center,),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+      ),
+      body: ListView.separated(
+          padding: const EdgeInsets.all(8),
+          itemCount: entries.length,
+          itemBuilder: (BuildContext context, int index) => _listTile(entries[index],index,context),
+          separatorBuilder: (BuildContext context, int index) => const Divider()),
+    );
   }
 }
 
@@ -38,6 +48,14 @@ ListTile _listTile(String titleStr,int index,BuildContext context) => ListTile(
                 context,
                 MaterialPageRoute(
                     builder: (context) => CustomBrowser("http://45.32.39.163/chongai_privacy.html",titleStr)
+                )
+            );
+            break;
+          case 1 : //用户协议
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => CustomBrowser("http://45.32.39.163/chongai_user.html",titleStr)
                 )
             );
             break;

@@ -111,11 +111,7 @@ class HomeManagerState extends State<HomeManagerWidget>
         store: globalStore,
         child: new Scaffold(
             key: mScaffoldState,
-            appBar: mCurrentIndex == 0
-                ? null
-                : new AppBar(
-                    title: new Text(mTitle),
-                  ),
+            appBar: null,
             body: mIsLoading
                 ? new Center(
                     child: new CircularProgressIndicator(),
