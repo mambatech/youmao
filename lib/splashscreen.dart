@@ -30,7 +30,6 @@ class SplashState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    umengInit();
     loadData();
   }
 
@@ -79,13 +78,6 @@ class SplashState extends State<SplashScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  umengInit() async{
-    await UmengAnalyticsPlugin.init(
-      androidKey: '5e92ab4f0cafb269c6000033',
-      iosKey: '5e92ab89570df36f71000080',
     );
   }
 
