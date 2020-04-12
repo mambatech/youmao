@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:youmao/home_page.dart';
+import 'package:youmao/me_page.dart';
 import 'package:youmao/music_page.dart';
 import 'package:youmao/redux/GlobalAppState.dart';
 import 'package:youmao/redux/play/action.dart' as play;
@@ -19,8 +20,7 @@ class HomeManagerWidget extends StatefulWidget {
   HomeManagerWidget(this.globalStore);
   final bottomItems = [
     new BottomItem("Home", Icons.home),
-    new BottomItem("Music", Icons.library_music),
-    new BottomItem("Sound", Icons.surround_sound),
+    new BottomItem("Me", Icons.person),
   ];
 
   @override
@@ -68,7 +68,7 @@ class HomeManagerState extends State<HomeManagerWidget> with SingleTickerProvide
         }
     );
 
-    mPages = [HomePage("首页"), MusicPage("音乐咯"), SoundPage("声音")];
+    mPages = [HomePage("首页"), MePage("我")];
   }
 
 
