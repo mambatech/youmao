@@ -67,7 +67,7 @@ class HomeManagerState extends State<HomeManagerWidget>
       }
     });
 
-    mPages = [HomePage("首页"), MusicPage("音乐咯")];
+    mPages = [HomePage("首页"), MePage("我的")];
   }
 
   @override

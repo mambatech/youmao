@@ -216,4 +216,8 @@ class PageHomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
       bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }
