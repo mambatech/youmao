@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:youmao/page/Album/albumDetail.dart';
+import 'package:youmao/utils/router.dart';
 
 
 class RecommandAlbum extends StatelessWidget {
@@ -20,13 +21,10 @@ class RecommandAlbum extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
-              Navigator.push(
+              Navigator.pushNamed(
                 context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return AlbumDetail(rowData[index]['id']);
-                  }
-                )
+                RouteNames.ALBUM_DETAIL,
+                arguments: rowData[index]['id']
               );
             },
             child: Container(

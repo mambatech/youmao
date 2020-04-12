@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:umeng_analytics_plugin/umeng_analytics_plugin.dart';
 import 'package:youmao/home.dart';
 import 'package:youmao/home_page.dart';
 import 'package:youmao/redux/GlobalAppState.dart';
 import 'package:redux/redux.dart';
+import 'package:youmao/utils/router.dart';
 
 class SplashScreen extends StatefulWidget {
 
@@ -28,6 +30,7 @@ class SplashState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    umengInit();
     loadData();
   }
 
@@ -79,14 +82,19 @@ class SplashState extends State<SplashScreen> {
     );
   }
 
+  umengInit() async{
+    await UmengAnalyticsPlugin.init(
+      androidKey: '5e92ab4f0cafb269c6000033',
+      iosKey: '5e92ab89570df36f71000080',
+    );
+  }
+
   loadData() async {
     setState(() {
       mIsLoading = true;
     });
     Future.delayed(Duration(milliseconds: 200), () {
-      Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (context){
-        return new HomeManagerWidget(globalStore);
-      }));
+      Navigator.of(context).pushReplacementNamed(RouteNames.HOME_WIDGET,arguments: globalStore);
     });
   }
 }

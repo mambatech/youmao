@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youmao/page/webview_page.dart';
+import 'package:youmao/utils/router.dart';
 
 class MePage extends StatefulWidget {
   String title;
@@ -42,21 +43,19 @@ ListTile _listTile(String titleStr,int index,BuildContext context) => ListTile(
             fontSize: 16,
           )),
       onTap: (){
-        switch(index){
-          case 0 :   //隐私协议
-            Navigator.push(
+        switch (index) {
+          case 0 : //隐私协议
+            Navigator.pushNamed(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => CustomBrowser("http://45.32.39.163/chongai_privacy.html",titleStr)
-                )
+                RouteNames.POLICY_PRIVACY,
+                arguments: titleStr
             );
             break;
           case 1 : //用户协议
-            Navigator.push(
+            Navigator.pushNamed(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => CustomBrowser("http://45.32.39.163/chongai_user.html",titleStr)
-                )
+                RouteNames.USER_PRIVACY,
+                arguments: titleStr
             );
             break;
       }

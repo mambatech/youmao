@@ -11,6 +11,8 @@ import 'package:youmao/splashscreen.dart';
 import 'dart:io';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:redux/redux.dart';
+import 'package:youmao/utils/AppAnalysis.dart';
+import 'package:youmao/utils/router.dart';
 
 void main() {
 
@@ -51,6 +53,8 @@ class MyApp extends StatelessWidget {
                       title: '友猫',
                       theme: theme,
                       debugShowCheckedModeBanner: false,
+                      onGenerateRoute: Router.generateRoute,
+                      navigatorObservers: [AppAnalysis()],
                       home: new SplashScreen(globalStore),
                     ),
                   );

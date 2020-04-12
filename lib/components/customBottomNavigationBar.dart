@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:youmao/page/play.dart';
 import 'package:youmao/redux/GlobalAppState.dart';
+import 'package:youmao/utils/router.dart';
 import 'commonText.dart';
 import 'package:youmao/redux/play/action.dart' as playControllerActions;
 
@@ -64,11 +65,9 @@ class CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               Expanded(
                 child: InkWell(
                   onTap: () {
-                    Navigator.push(
+                    Navigator.pushNamed(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => Play()
-                      )
+                      RouteNames.PLAY,
                     );
                   },
                   child: Row(
