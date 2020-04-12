@@ -37,7 +37,7 @@ ListTile _listTile(String titleStr,int index,BuildContext context) => ListTile(
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => CustomBrowser("http://45.32.39.163/ExNorVpn_privacy.html",titleStr)
+                    builder: (context) => CustomBrowser("http://45.32.39.163/chongai_privacy.html",titleStr)
                 )
             );
             break;
