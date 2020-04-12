@@ -9,7 +9,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="友猫"
+        android:label="宠爱"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true"
         >

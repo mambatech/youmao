@@ -1,5 +1,6 @@
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:youmao/model/model.dart';
@@ -7,18 +8,23 @@ import 'package:youmao/redux/GlobalAppState.dart';
 import 'package:youmao/redux/common/state.dart';
 import 'package:youmao/redux/play/GlobalPlayState.dart';
 import 'package:youmao/splashscreen.dart';
-import 'home_page.dart';
-import 'music_page.dart';
-import 'soud_page.dart';
+import 'dart:io';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:redux/redux.dart';
 
 void main() {
+
   final store = Store<GlobalAppState>(appReducer, middleware: [thunkMiddleware], initialState: GlobalAppState(
     commonState: CommonState.initState(),
     globalPlayState: GlobalPlayState.initState(),
   ));
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp(store));
+  if (Platform.isAndroid) {
+    // 以下两行 设置android状态栏为透明的沉浸。写在组件渲染之后，是为了在渲染后进行set赋值，覆盖状态栏，写在渲染之前MaterialApp组件会覆盖掉这个值。
+    SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -33,8 +39,8 @@ class MyApp extends StatelessWidget {
         child: new DynamicTheme(
                 defaultBrightness: Brightness.light,
                 data: (brightness) => new ThemeData(
-                  primarySwatch: Colors.green,
-                  accentColor: Colors.greenAccent,
+                  primarySwatch: Colors.pink,
+                  accentColor: Colors.pinkAccent,
                   fontFamily: 'Raleway',
                   brightness: brightness,
                 ),

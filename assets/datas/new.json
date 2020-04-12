@@ -1,0 +1,35 @@
+{
+  "playlists": [
+    {
+      "id": 1,
+      "name": "Luna and June's Purrfect Harmony",
+      "coverImgUrl": "assets/images/cat/hot/5.jpg",
+      "fileUrl": "assets/cat/cat_luna.mp3",
+      "description": "卖萌耍宝"
+    }, {
+      "id": 2,
+      "name": "私の猫をリラックス - 音楽と一緒に寝てあなたの猫を助けます",
+      "coverImgUrl": "assets/images/cat/hot/6.jpg",
+      "fileUrl": "assets/cat/cat_gutti.mp3",
+      "description": "卖萌耍宝"
+    },
+      {
+        "id": 3,
+        "name": "relax for grumpy cat",
+        "coverImgUrl": "assets/images/cat/hot/7.jpg",
+        "fileUrl": "assets/cat/cat_grumpy.mp3",
+        "description": "卖萌耍宝"
+      },
+    {
+      "id": 4,
+      "name": "Scooter Bere's Aria",
+      "coverImgUrl": "assets/images/cat/hot/8.jpg",
+      "fileUrl": "assets/cat/cat_scooter.mp3",
+      "description": "卖萌耍宝"
+    }
+  ],
+  "total": 3,
+  "code": 200,
+  "more": false,
+  "cat": "全部"
+}

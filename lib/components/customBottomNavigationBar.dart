@@ -64,7 +64,6 @@ class CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               Expanded(
                 child: InkWell(
                   onTap: () {
-                    print("william ------------onTap bottom play");
                     Navigator.push(
                       context,
                       MaterialPageRoute(

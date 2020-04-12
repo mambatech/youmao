@@ -51,7 +51,12 @@ GlobalPlayState playStateReducer(GlobalPlayState state, action) {
       state.playList.add(action['payload']['songDetail']);
       state.currentIndex = state.playList.length - 1;
       state.songUrl = action['payload']['songUrl'];
-      state.audioPlayer.play(state.songUrl);
+      if(action['payload']['localplay']){
+        state.audioPlayer.play(state.songUrl, isLocal: true);
+      } else {
+        state.audioPlayer.play(state.songUrl);
+      }
+
       state.playing = true;
     }
     else {

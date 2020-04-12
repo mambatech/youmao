@@ -1,4 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 
 /// date : 2020/3/29
 /// created by william yuan
@@ -58,6 +60,7 @@ class GlobalPlayState {
       duration = d;
     });
   }
+
 
   GlobalPlayState(this._playList, this._audioPlayer, this._coverMainColor, this._playing, this._currentIndex);
 }
