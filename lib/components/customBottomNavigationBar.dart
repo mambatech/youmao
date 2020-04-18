@@ -31,7 +31,7 @@ class CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       converter: (store) => store.state,
       builder: (BuildContext context, state) {
         return
-        state.globalPlayState.playList.length == 0 || state.globalPlayState.playList[state.globalPlayState.currentIndex] == null
+        state.globalPlayState.playList.length == 0
         ?
         Container(
           width: MediaQuery.of(context).size.width,
@@ -65,34 +65,35 @@ class CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               Expanded(
                 child: InkWell(
                   onTap: () {
-                    Navigator.pushNamed(
-                      context,
-                      RouteNames.PLAY,
-                    );
+//                    Navigator.pushNamed(
+//                      context,
+//                      RouteNames.PLAY,
+//                    );
                   },
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      state.globalPlayState.playList[state.globalPlayState.currentIndex]['al']['picUrl'] == null
+                      state.globalPlayState.coverUrl == null
                       ?
                       Container()
                       :
                       ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Container(
-                          child: CachedNetworkImage(
-                            imageUrl: state.globalPlayState.playList[state.globalPlayState.currentIndex]['al']['picUrl'],
-                            width: 40,
-                            height: 40,
-                            placeholder: (context, url) => ClipRRect(
-                              child: Image.asset(
-                                'assets/images/album_avatar_default.png',
-                                width: 40,
-                                height: 40,
-                              ),
-                              borderRadius: BorderRadius.circular(20)
-                            )
-                          )
+                            child: Image.asset(state.globalPlayState.coverUrl, width: 40, height: 40, fit: BoxFit.cover,),
+//                          child: CachedNetworkImage(
+//                            imageUrl: state.globalPlayState.playList[state.globalPlayState.currentIndex]['al']['picUrl'],
+//                            width: 40,
+//                            height: 40,
+//                            placeholder: (context, url) => ClipRRect(
+//                              child: Image.asset(
+//                                'assets/images/album_avatar_default.png',
+//                                width: 40,
+//                                height: 40,
+//                              ),
+//                              borderRadius: BorderRadius.circular(20)
+//                            )
+//                          )
                         ),
                       ),
                       Expanded(
@@ -104,7 +105,7 @@ class CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               CommonText(
-                                state.globalPlayState.playList[state.globalPlayState.currentIndex]['name'],
+                                state.globalPlayState.name,
                                 12,
                                 1,
                                 Colors.white,
@@ -115,7 +116,7 @@ class CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                                 margin: EdgeInsets.only(top: 3),
                                 child: 
                                 CommonText(
-                                  state.globalPlayState.playList[state.globalPlayState.currentIndex]['ar'][0]['name'],
+                                  "",
                                   10,
                                   1,
                                   Colors.white70,
@@ -131,31 +132,33 @@ class CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                   ),
                 ),
               ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
-                  StoreConnector<GlobalAppState, VoidCallback>(
-                    converter: (store) {
-                      return () => store.dispatch(playControllerActions.playePrevSong);
-                    },
-                    builder: (BuildContext context, callback) {
-                      return Material(
-                        color: Colors.transparent,
-                        child: IconButton(
-                          onPressed: () async {
-                            if (isRequesting == true) {
-                              return null;
-                            }
-                            isRequesting = true;
-                            await callback();
-                            isRequesting = false;
-                          },
-                          icon: Icon(Icons.skip_previous, size: 25, color: Colors.white)
-                        )
-                      );
-                    }
-                  ),
+                  //TODO 暂时去掉上一首
+//                  StoreConnector<GlobalAppState, VoidCallback>(
+//                    converter: (store) {
+//                      return () => store.dispatch(playControllerActions.playePrevSong);
+//                    },
+//                    builder: (BuildContext context, callback) {
+//                      return Material(
+//                        color: Colors.transparent,
+//                        child: IconButton(
+//                          onPressed: () async {
+//                            if (isRequesting == true) {
+//                              return null;
+//                            }
+//                            isRequesting = true;
+//                            await callback();
+//                            isRequesting = false;
+//                          },
+//                          icon: Icon(Icons.skip_previous, size: 25, color: Colors.white)
+//                        )
+//                      );
+//                    }
+//                  ),
                   StoreConnector<GlobalAppState, VoidCallback>(
                     converter: (store) {
                       var _action = new Map();
@@ -181,27 +184,28 @@ class CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                       );
                     }
                   ),
-                  StoreConnector<GlobalAppState, VoidCallback>(
-                    converter: (store) {
-                      return () => store.dispatch(playControllerActions.playNextSong);
-                    },
-                    builder: (BuildContext context, callback) {
-                      return Material(
-                        color: Colors.transparent,
-                        child: IconButton(
-                          onPressed: () async {
-                            if (isRequesting == true) {
-                              return null;
-                            }
-                            isRequesting = true;
-                            await callback();
-                            isRequesting = false;
-                          },
-                          icon: Icon(Icons.skip_next, size: 25, color: Colors.white)
-                        )
-                      );
-                    }
-                  ),
+//TODO 暂时去掉下一首
+//                  StoreConnector<GlobalAppState, VoidCallback>(
+//                    converter: (store) {
+//                      return () => store.dispatch(playControllerActions.playNextSong);
+//                    },
+//                    builder: (BuildContext context, callback) {
+//                      return Material(
+//                        color: Colors.transparent,
+//                        child: IconButton(
+//                          onPressed: () async {
+//                            if (isRequesting == true) {
+//                              return null;
+//                            }
+//                            isRequesting = true;
+//                            await callback();
+//                            isRequesting = false;
+//                          },
+//                          icon: Icon(Icons.skip_next, size: 25, color: Colors.white)
+//                        )
+//                      );
+//                    }
+//                  ),
                 ],
               )
             ],
