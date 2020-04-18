@@ -22,6 +22,14 @@ class GlobalPlayState {
   get songUrl => _songUrl;
   set songUrl(val) => _songUrl = val;
 
+  String _coverUrl;
+  get coverUrl => _coverUrl;
+  set coverUrl(val) => _coverUrl = val;
+
+  String _name;
+  get name => _name;
+  set name(val) => _name = val;
+
   //第三方音乐播放器,用于音乐播放
   AudioPlayer _audioPlayer;
   get audioPlayer => _audioPlayer;

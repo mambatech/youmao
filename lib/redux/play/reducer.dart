@@ -31,6 +31,15 @@ GlobalPlayState playStateReducer(GlobalPlayState state, action) {
       var co =  action['payload']['coverMainColor'];
       state.coverMainColor = co;
     }
+    if (action['type'] == Actions.play) {
+      state.audioPlayer.play(state.songUrl);
+      state.playing = true;
+    }
+    if (action['type'] == Actions.pause) {
+      state.audioPlayer.pause();
+      state.playing = false;
+    }
+
     if(action['type'] == Actions.addPlayList) {
       if (state.playing) {
         state.audioPlayer.stop();
@@ -51,6 +60,8 @@ GlobalPlayState playStateReducer(GlobalPlayState state, action) {
       state.playList.add(action['payload']['songDetail']);
       state.currentIndex = state.playList.length - 1;
       state.songUrl = action['payload']['songUrl'];
+      state.coverUrl = action['payload']['coverImgUrl'];
+      state.name = action['payload']['name'];
       if(action['payload']['localplay']){
         state.audioPlayer.play(state.songUrl, isLocal: true);
       } else {

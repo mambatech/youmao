@@ -150,6 +150,7 @@ class CatSongsColumn extends StatelessWidget {
 //                    _playListActionPayload['songUrl'] = 'http://music.163.com/song/media/outer/url?id=' + song['id'].toString() + '.mp3';
                     _playListActionPayload['songUrl'] = song['fileUrl'];
                     _playListActionPayload['localplay'] = true;
+                    _playListActionPayload['name'] = song['name'];
 
                     localPlay(song['id'].toString(), song['fileUrl'], context).then((String value){
                       _playListActionPayload['songUrl'] = value;

@@ -54,6 +54,7 @@ class RecommendList extends StatelessWidget {
 //                    _playListActionPayload['songUrl'] = 'http://music.163.com/song/media/outer/url?id=' + song['id'].toString() + '.mp3';
                   _playListActionPayload['songUrl'] = rowData[index]['fileUrl'];
                   _playListActionPayload['localplay'] = true;
+                  _playListActionPayload['name'] = rowData[index]['name'];
 
                   localPlay(rowData[index]['id'].toString(),
                           rowData[index]['fileUrl'], context)
