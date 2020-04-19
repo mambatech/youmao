@@ -3,27 +3,27 @@
     "name": "常见症状",
     "content_data": [
       {
-        "utl": "assets/datas/daily_html/common/scratching_ears.html",
+        "url": "assets/datas/daily_html/common/scratching_ears.html",
         "summary": "从猫咪频繁挠耳朵看病情，早发现早治疗！",
         "image": "assets/images/daily_wiki/common/common_1.jpg"
       },
       {
-        "utl": "assets/datas/daily_html/common/much_tears.html",
+        "url": "assets/datas/daily_html/common/much_tears.html",
         "summary": "猫流泪多是因这五个原因，铲屎官可别瞎激动！",
         "image": "assets/images/daily_wiki/common/common_2.jpg"
       },
       {
-        "utl": "assets/datas/daily_html/common/piss_shit.html",
+        "url": "assets/datas/daily_html/common/piss_shit.html",
         "summary": "猫猫拉稀怎么回事？",
         "image": "assets/images/daily_wiki/common/common_3.png"
       },
       {
-        "utl": "assets/datas/daily_html/common/slobber.html",
+        "url": "assets/datas/daily_html/common/slobber.html",
         "summary": "猫猫流口水的原因都有哪些？",
         "image": "assets/images/daily_wiki/common/common_4.png"
       },
       {
-        "utl": "assets/datas/daily_html/common/anorexia.html",
+        "url": "assets/datas/daily_html/common/anorexia.html",
         "summary": "猫咪厌食的原因和对策！",
         "image": "assets/images/daily_wiki/common/common_5.png"
       }
@@ -33,27 +33,27 @@
     "name": "发情绝育",
     "content_data": [
       {
-        "utl": "assets/datas/daily_html/sexy/ease_music.html",
+        "url": "assets/datas/daily_html/sexy/ease_music.html",
         "summary": "缓解母猫发情的音乐，母猫发情放什么音乐？",
         "image": "assets/images/daily_wiki/sexy/sexy_1.png"
       },
       {
-        "utl": "assets/datas/daily_html/sexy/sexy_perform.html",
+        "url": "assets/datas/daily_html/sexy/sexy_perform.html",
         "summary": "猫咪发情的表现？",
         "image": "assets/images/daily_wiki/sexy/sexy_2.png"
       },
       {
-        "utl": "assets/datas/daily_html/sexy/sexy_timing.html",
+        "url": "assets/datas/daily_html/sexy/sexy_timing.html",
         "summary": "猫咪发情时间",
         "image": "assets/images/daily_wiki/sexy/sexy_3.png"
       },
       {
-        "utl": "assets/datas/daily_html/sexy/handle_sexy.html",
+        "url": "assets/datas/daily_html/sexy/handle_sexy.html",
         "summary": "猫咪发情怎么办",
         "image": "assets/images/daily_wiki/sexy/sexy_4.png"
       },
       {
-        "utl": "assets/datas/daily_html/sexy/why_sexy.html",
+        "url": "assets/datas/daily_html/sexy/why_sexy.html",
         "summary": "猫咪为什么会发情？",
         "image": "assets/images/daily_wiki/sexy/sexy_5.png"
       }
@@ -63,27 +63,27 @@
     "name": "新手养猫",
     "content_data": [
       {
-        "utl": "assets/datas/daily_html/newer/new_to_home.html",
+        "url": "assets/datas/daily_html/newer/new_to_home.html",
         "summary": "新猫到家，需要注意的事项？",
         "image": "assets/images/daily_wiki/newer/newer_1.png"
       },
       {
-        "utl": "assets/datas/daily_html/newer/shower_and_bug.html",
+        "url": "assets/datas/daily_html/newer/shower_and_bug.html",
         "summary": "新猫洗澡和驱虫",
         "image": "assets/images/daily_wiki/newer/newer_2.png"
       },
       {
-        "utl": "assets/datas/daily_html/newer/newer_common_sence.html",
+        "url": "assets/datas/daily_html/newer/newer_common_sence.html",
         "summary": "新手养猫的基础知识",
         "image": "assets/images/daily_wiki/newer/newer_3.png"
       },
       {
-        "utl": "assets/datas/daily_html/newer/newer_mistake.html",
+        "url": "assets/datas/daily_html/newer/newer_mistake.html",
         "summary": "养猫常见新手误区？",
         "image": "assets/images/daily_wiki/newer/newer_4.png"
       },
       {
-        "utl": "assets/datas/daily_html/newer/newer_safe.html",
+        "url": "assets/datas/daily_html/newer/newer_safe.html",
         "summary": "养猫之前，你必需要知道的安全知识",
         "image": "assets/images/daily_wiki/newer/newer_5.png"
       }
@@ -93,22 +93,22 @@
     "name": "幼猫护理",
     "content_data": [
       {
-        "utl": "assets/datas/daily_html/carer/begin_to_test.html",
+        "url": "assets/datas/daily_html/carer/begin_to_test.html",
         "summary": "如何开始尝试？",
         "image": "assets/images/daily_wiki/carer/carer_1.png"
       },
       {
-        "utl": "assets/datas/daily_html/carer/first_milk.html",
+        "url": "assets/datas/daily_html/carer/first_milk.html",
         "summary": "什么是初乳？",
         "image": "assets/images/daily_wiki/carer/carer_2.png"
       },
       {
-        "utl": "assets/datas/daily_html/carer/what_is_milk_cake.html",
+        "url": "assets/datas/daily_html/carer/what_is_milk_cake.html",
         "summary": "什么是奶糕？",
         "image": "assets/images/daily_wiki/carer/carer_3.png"
       },
       {
-        "utl": "assets/datas/daily_html/carer/high_ligh_care.html",
+        "url": "assets/datas/daily_html/carer/high_ligh_care.html",
         "summary": "特别注意什么呢？",
         "image": "assets/images/daily_wiki/carer/carer_4.png"
       }
