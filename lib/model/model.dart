@@ -11,3 +11,10 @@ class Song {
 
   String mName;
 }
+
+class Pet {
+  String mName;
+  String mAvatar;
+  String mSex; // female male unknown
+  String mBirthDay;
+}
