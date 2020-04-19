@@ -7,6 +7,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:youmao/home_page.dart';
 import 'package:youmao/me_page.dart';
 import 'package:youmao/music_page.dart';
+import 'package:youmao/mypet_page.dart';
 import 'package:youmao/redux/GlobalAppState.dart';
 import 'package:youmao/redux/play/action.dart' as play;
 import 'package:youmao/redux/play/action.dart';
@@ -20,6 +21,7 @@ class HomeManagerWidget extends StatefulWidget {
   HomeManagerWidget(this.globalStore);
   final bottomItems = [
     new BottomItem("Home", Icons.home),
+    new BottomItem("Pet", Icons.pets),
     new BottomItem("Settings", Icons.settings),
   ];
 
@@ -67,7 +69,7 @@ class HomeManagerState extends State<HomeManagerWidget>
       }
     });
 
-    mPages = [HomePage("首页"), MePage("我的")];
+    mPages = [HomePage("首页"), PetPage("爱宠"), MePage("我的")];
   }
 
   @override
