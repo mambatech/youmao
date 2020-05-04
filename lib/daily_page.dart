@@ -60,61 +60,64 @@ class DailyPageState extends State<DailyPage> {
                 padding: EdgeInsets.fromLTRB(20, 30, 20, 0),
                 child: CustomScrollView(
                   slivers: <Widget>[
-                    SliverGrid(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4,
-                        mainAxisSpacing: 10.0,
-                        crossAxisSpacing: 10.0,
-                        childAspectRatio: 1.0,
-                      ),
-                      delegate: SliverChildBuilderDelegate(
-                            (BuildContext context, int index) {
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              CircleAvatar(
-                                radius: 25,
-                                backgroundImage: AssetImage(
-                                    'assets/images/daily_wiki/cat_wiki.png'),
-                              ),
-                              Text(
-                                wikiDatas[index].name,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Roboto',
-                                  letterSpacing: 0.5,
-                                  fontSize: 14,
+                    SliverPadding(
+                      padding: EdgeInsets.only(bottom: 20),
+                      sliver: SliverGrid(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 4,
+                          mainAxisSpacing: 10.0,
+                          crossAxisSpacing: 10.0,
+                          childAspectRatio: 1.0,
+                        ),
+                        delegate: SliverChildBuilderDelegate(
+                          (BuildContext context, int index) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                CircleAvatar(
+                                  radius: 25,
+                                  backgroundImage: AssetImage(
+                                      'assets/images/daily_wiki/cat_wiki.png'),
                                 ),
-                              )
-                            ],
-                          );
-                        },
-                        childCount: wikiDatas.length,
+                                Text(
+                                  wikiDatas[index].name,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Roboto',
+                                    letterSpacing: 0.5,
+                                    fontSize: 14,
+                                  ),
+                                )
+                              ],
+                            );
+                          },
+                          childCount: wikiDatas.length,
+                        ),
                       ),
                     ),
                     SliverFixedExtentList(
                       itemExtent: 100,
                       delegate: SliverChildBuilderDelegate(
-                              (BuildContext context, int index) {
-                            return Row(
+                          (BuildContext context, int index) {
+                        return Column(
+                          children: <Widget>[
+                            Row(
                               children: <Widget>[
                                 Expanded(
                                   child: Container(
                                       margin: EdgeInsets.only(right: 10),
                                       child: Text(
-                                          recommendDailyMode.contentData[index]
-                                              .summary,
+                                          recommendDailyMode
+                                              .contentData[index].summary,
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.w600,
                                             fontFamily: 'Roboto',
                                             letterSpacing: 0.5,
                                             fontSize: 14,
-                                          ))
-                                  ),
-                                )
-                                ,
+                                          ))),
+                                ),
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(5),
                                   child: Image.asset(
@@ -125,8 +128,11 @@ class DailyPageState extends State<DailyPage> {
                                   ),
                                 )
                               ],
-                            );
-                          }, childCount: recommendDailyMode.contentData.length),
+                            ),
+                            Divider(),
+                          ],
+                        );
+                      }, childCount: recommendDailyMode.contentData.length),
                     ),
                   ],
                 ),
