@@ -16,13 +16,15 @@ import 'package:youmao/soud_page.dart';
 import 'package:redux/redux.dart';
 import 'package:youmao/utils/tools.dart';
 
+import 'daily_page.dart';
+
 class HomeManagerWidget extends StatefulWidget {
   final Store<GlobalAppState> globalStore;
   HomeManagerWidget(this.globalStore);
   final bottomItems = [
     new BottomItem("Home", Icons.home),
     new BottomItem("Pet", Icons.pets),
-    new BottomItem("Settings", Icons.settings),
+    new BottomItem("Wiki", Icons.whatshot),
   ];
 
   @override
@@ -69,7 +71,7 @@ class HomeManagerState extends State<HomeManagerWidget>
       }
     });
 
-    mPages = [HomePage("首页"), PetPage("爱宠"), MePage("我的")];
+    mPages = [HomePage("首页"), PetPage("爱宠"), DailyPage("萌宠百科")];
   }
 
   @override

@@ -10,36 +10,40 @@ String dailyModelToJson(List<DailyModel> data) => json.encode(List<dynamic>.from
 
 class DailyModel {
   String name;
-  List<DailyItemModel> contentData;
+  String type;
+  List<DailyModelItem> contentData;
 
   DailyModel({
     this.name,
+    this.type,
     this.contentData,
   });
 
   factory DailyModel.fromJson(Map<String, dynamic> json) => DailyModel(
     name: json["name"],
-    contentData: List<DailyItemModel>.from(json["content_data"].map((x) => DailyItemModel.fromJson(x))),
+    type: json["type"],
+    contentData: List<DailyModelItem>.from(json["content_data"].map((x) => DailyModelItem.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
     "name": name,
+    "type": type,
     "content_data": List<dynamic>.from(contentData.map((x) => x.toJson())),
   };
 }
 
-class DailyItemModel {
+class DailyModelItem {
   String url;
   String summary;
   String image;
 
-  DailyItemModel({
+  DailyModelItem({
     this.url,
     this.summary,
     this.image,
   });
 
-  factory DailyItemModel.fromJson(Map<String, dynamic> json) => DailyItemModel(
+  factory DailyModelItem.fromJson(Map<String, dynamic> json) => DailyModelItem(
     url: json["url"],
     summary: json["summary"],
     image: json["image"],

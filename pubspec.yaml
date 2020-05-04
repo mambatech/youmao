@@ -106,6 +106,15 @@ flutter:
     - assets/cat/cat_gutti.mp3
     - assets/cat/cat_scooter.mp3
     - assets/cat/cat_luna.mp3
+#   猫咪百科
+    - assets/datas/daily_wiki_tag_and_feeds.json
+    - assets/datas/daily_html/
+    - assets/images/daily_wiki/
+    - assets/images/daily_wiki/feeds/
+    - assets/images/daily_wiki/carer/
+    - assets/images/daily_wiki/common/
+    - assets/images/daily_wiki/newer/
+    - assets/images/daily_wiki/sexy/
 
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg

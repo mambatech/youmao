@@ -1,6 +1,7 @@
 [
   {
     "name": "常见症状",
+    "type": "tag",
     "content_data": [
       {
         "url": "assets/datas/daily_html/common/scratching_ears.html",
@@ -31,6 +32,7 @@
   },
   {
     "name": "发情绝育",
+    "type": "tag",
     "content_data": [
       {
         "url": "assets/datas/daily_html/sexy/ease_music.html",
@@ -61,6 +63,7 @@
   },
   {
     "name": "新手养猫",
+    "type": "tag",
     "content_data": [
       {
         "url": "assets/datas/daily_html/newer/new_to_home.html",
@@ -91,6 +94,7 @@
   },
   {
     "name": "幼猫护理",
+    "type": "tag",
     "content_data": [
       {
         "url": "assets/datas/daily_html/carer/begin_to_test.html",
@@ -111,6 +115,32 @@
         "url": "assets/datas/daily_html/carer/high_ligh_care.html",
         "summary": "特别注意什么呢？",
         "image": "assets/images/daily_wiki/carer/carer_4.png"
+      }
+    ]
+  },
+  {
+    "name": "推荐文章",
+    "type": "feeds",
+    "content_data": [
+      {
+        "url": "assets/datas/daily_html/feeds/much_tears_peace.html",
+        "summary": "猫流泪多是因这五个原因，铲屎官可别瞎激动！",
+        "image": "assets/images/daily_wiki/feeds/feeds_1.png"
+      },
+      {
+        "url": "assets/datas/daily_html/feeds/cats_love_music.html",
+        "summary": "猫咪喜欢音乐吗？",
+        "image": "assets/images/daily_wiki/feeds/feeds_2.png"
+      },
+      {
+        "url": "assets/datas/daily_html/feeds/how_to_care_6_week.html",
+        "summary": "新生小猫的前6周我们应该怎样照顾？",
+        "image": "assets/images/daily_wiki/feeds/feeds_3.png"
+      },
+      {
+        "url": "assets/datas/daily_html/feeds/how_to_judge_help.html",
+        "summary": "怎么判断猫没精神还是单纯睡觉,或许这些方法可以帮你。",
+        "image": "assets/images/daily_wiki/feeds/feeds_4.png"
       }
     ]
   }
