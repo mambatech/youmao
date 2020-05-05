@@ -108,7 +108,11 @@ flutter:
     - assets/cat/cat_luna.mp3
 #   猫咪百科
     - assets/datas/daily_wiki_tag_and_feeds.json
-    - assets/datas/daily_html/
+    - assets/datas/daily_html/carer/
+    - assets/datas/daily_html/common/
+    - assets/datas/daily_html/feeds/
+    - assets/datas/daily_html/newer/
+    - assets/datas/daily_html/sexy/
     - assets/images/daily_wiki/
     - assets/images/daily_wiki/feeds/
     - assets/images/daily_wiki/carer/
