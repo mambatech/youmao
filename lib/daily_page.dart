@@ -71,15 +71,21 @@ class DailyPageState extends State<DailyPage> {
                           childAspectRatio: 1.0,
                         ),
                         delegate: SliverChildBuilderDelegate(
-                              (BuildContext context, int index) {
+                          (BuildContext context, int index) {
                             return InkWell(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   CircleAvatar(
-                                    radius: 25,
-                                    backgroundImage: AssetImage(
-                                        'assets/images/daily_wiki/cat_wiki.png'),
+                                    radius: 27,
+                                    backgroundColor:
+                                        Color.fromARGB(255, 248, 187, 208),
+                                    child: CircleAvatar(
+                                        radius: 20,
+                                        backgroundColor:
+                                            Color.fromARGB(0, 248, 187, 208),
+                                        backgroundImage: AssetImage(
+                                            wikiDatas[index].typeImage)),
                                   ),
                                   Text(
                                     wikiDatas[index].name,
@@ -94,10 +100,10 @@ class DailyPageState extends State<DailyPage> {
                                 ],
                               ),
                               onTap: () {
-                                Navigator
-                                    .pushNamed(context, RouteNames.WIKI_SUBJECT_LIST,
-                                arguments:wikiDatas[index]);
-                                },
+                                Navigator.pushNamed(
+                                    context, RouteNames.WIKI_SUBJECT_LIST,
+                                    arguments: wikiDatas[index]);
+                              },
                             );
                           },
                           childCount: wikiDatas.length,
@@ -107,49 +113,48 @@ class DailyPageState extends State<DailyPage> {
                     SliverFixedExtentList(
                       itemExtent: 100,
                       delegate: SliverChildBuilderDelegate(
-                              (BuildContext context, int index) {
-                            return InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                    context, RouteNames.WIKI_WEB,
-                                    arguments:
+                          (BuildContext context, int index) {
+                        return InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, RouteNames.WIKI_WEB,
+                                arguments:
                                     recommendDailyMode.contentData[index]);
-                              },
-                              child: Column(
+                          },
+                          child: Column(
+                            children: <Widget>[
+                              Row(
                                 children: <Widget>[
-                                  Row(
-                                    children: <Widget>[
-                                      Expanded(
-                                        child: Container(
-                                            margin: EdgeInsets.only(right: 10),
-                                            child: Text(
-                                                recommendDailyMode
-                                                    .contentData[index].summary,
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.w600,
-                                                  fontFamily: 'Roboto',
-                                                  letterSpacing: 0.5,
-                                                  fontSize: 14,
-                                                ))),
-                                      ),
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(5),
-                                        child: Image.asset(
-                                          recommendDailyMode
-                                              .contentData[index].image,
-                                          width: 70,
-                                          height: 70,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      )
-                                    ],
+                                  Expanded(
+                                    child: Container(
+                                        margin: EdgeInsets.only(right: 10),
+                                        child: Text(
+                                            recommendDailyMode
+                                                .contentData[index].summary,
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w600,
+                                              fontFamily: 'Roboto',
+                                              letterSpacing: 0.5,
+                                              fontSize: 14,
+                                            ))),
                                   ),
-                                  Divider(),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(5),
+                                    child: Image.asset(
+                                      recommendDailyMode
+                                          .contentData[index].image,
+                                      width: 70,
+                                      height: 70,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )
                                 ],
                               ),
-                            );
-                          }, childCount: recommendDailyMode.contentData.length),
+                              Divider(),
+                            ],
+                          ),
+                        );
+                      }, childCount: recommendDailyMode.contentData.length),
                     ),
                   ],
                 ),

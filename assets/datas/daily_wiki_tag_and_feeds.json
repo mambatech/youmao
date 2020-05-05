@@ -2,6 +2,7 @@
   {
     "name": "常见症状",
     "type": "tag",
+    "type_image": "assets/images/daily_wiki/tag_common.png",
     "content_data": [
       {
         "url": "assets/datas/daily_html/common/scratching_ears.html",
@@ -33,6 +34,7 @@
   {
     "name": "发情绝育",
     "type": "tag",
+    "type_image": "assets/images/daily_wiki/tag_sexy.png",
     "content_data": [
       {
         "url": "assets/datas/daily_html/sexy/ease_music.html",
@@ -64,6 +66,7 @@
   {
     "name": "新手养猫",
     "type": "tag",
+    "type_image": "assets/images/daily_wiki/tag_newer.png",
     "content_data": [
       {
         "url": "assets/datas/daily_html/newer/new_to_home.html",
@@ -95,6 +98,7 @@
   {
     "name": "幼猫护理",
     "type": "tag",
+    "type_image": "assets/images/daily_wiki/tag_carer.png",
     "content_data": [
       {
         "url": "assets/datas/daily_html/carer/begin_to_test.html",
@@ -121,6 +125,7 @@
   {
     "name": "推荐文章",
     "type": "feeds",
+    "type_image": "",
     "content_data": [
       {
         "url": "assets/datas/daily_html/feeds/much_tears_peace.html",
