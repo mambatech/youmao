@@ -24,14 +24,14 @@ class Router {
         return MaterialPageRoute(
             settings: RouteSettings(name: RouteNames.POLICY_PRIVACY),
             builder: (context) => CustomBrowser(
-                "http://45.32.39.163/chongai_privacy.html",
+                "http://fivelovelypets.com/chongai_privacy.html",
                 settings.arguments,false));
         break;
       case RouteNames.USER_PRIVACY:
         return MaterialPageRoute(
             settings: RouteSettings(name: RouteNames.USER_PRIVACY),
             builder: (context) => CustomBrowser(
-                "http://45.32.39.163/chongai_user.html",
+                "http://fivelovelypets.com/chongai_user.html",
                 settings.arguments,false));
         break;
       case RouteNames.HOME_WIDGET:

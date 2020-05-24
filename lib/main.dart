@@ -37,6 +37,8 @@ umengInit() async {
   UmengAnalyticsPlugin.init(
     androidKey: '5e92ab4f0cafb269c6000033',
     iosKey: '5e92ab89570df36f71000080',
+    channel: "umenglo",
+    logEnabled: true
   );
 }
 
